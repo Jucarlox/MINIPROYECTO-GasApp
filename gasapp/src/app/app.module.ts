@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialImportsModule } from './modules/material-imports.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogGasolineraDetailComponent } from './dialogs/dialog-gasolinera-detail/dialog-gasolinera-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,11 @@ import { DialogGasolineraDetailComponent } from './dialogs/dialog-gasolinera-det
     HttpClientModule,
     MaterialImportsModule,
     FlexLayoutModule,
+    BrowserAnimationsModule
+    
+  ],
+  entryComponents: [
+    DialogGasolineraDetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

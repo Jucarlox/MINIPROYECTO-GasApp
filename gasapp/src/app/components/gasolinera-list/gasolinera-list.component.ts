@@ -22,8 +22,8 @@ export class GasolineraListComponent implements OnInit {
       let jsonStringReplacedRotulo = jsonStringReplaced.replace(/Rótulo/gi, 'rotulo');
       let jsonStringReplaced2 = jsonStringReplacedRotulo.replace(/ListaEESSPrecio/gi, 'listaEESSPrecio');
       let jsonStringReplaced3 = jsonStringReplaced2.replace(/Municipio/gi, 'municipio');
-      //let jsonStringReplaced4 = jsonStringReplaced3.replace(/C.P./gi, 'cP');
-      let jsonStringReplaced5 = jsonStringReplaced3.replace(/Dirección/gi, 'direccion');
+      let jsonStringReplaced4 = jsonStringReplaced3.replace(/C\.P\./gi, 'cP');
+      let jsonStringReplaced5 = jsonStringReplaced4.replace(/Dirección/gi, 'direccion');
       let jsonStringReplaced6 = jsonStringReplaced5.replace(/Horario/gi, 'horario');
       let jsonStringReplaced7 = jsonStringReplaced6.replace(/Precio Gasolina 95 E5/gi, 'precioGasolina95E5');
       let jsonStringReplaced8 = jsonStringReplaced7.replace(/Precio Gasolina 98 E5/gi, 'precioGasolina98E5');
