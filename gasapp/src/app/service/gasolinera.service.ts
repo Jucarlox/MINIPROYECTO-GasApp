@@ -23,4 +23,8 @@ export class GasolineraService {
     let jsonFinal: GasolinerasListResponse = JSON.parse(jsonStringReplaced);
     return jsonFinal.listaEESSPrecio;
   }
+
+  getProvincias(): Observable<any> {
+    return this.http.get<any>("https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/");
+  }
 }

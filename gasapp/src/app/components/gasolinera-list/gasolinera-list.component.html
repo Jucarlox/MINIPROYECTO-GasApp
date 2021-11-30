@@ -1,3 +1,40 @@
+<div><mat-form-field appearance="fill">
+  <mat-label>Provincias</mat-label>
+  
+    <mat-select multiple name="genre" [(ngModel)]="IDPovincia">
+      <mat-option *ngFor="let provincia of provincias" [value]="provincia.IDPovincia">
+        {{provincia.Provincia}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+<button mat-raised-button color="accent" (click)="filterGasolinera()">Filtrar</button>
+<button mat-raised-button color="accent" (click)="quitarFiltro()">Quitar Filtro</button></div> 
+
+
+<mat-form-field appearance="fill">
+  <mat-label>Provincias</mat-label>
+  
+    <mat-select multiple name="genre" [(ngModel)]="IDPovincia">
+      <mat-option *ngFor="let provincia of provincias" [value]="provincia.IDPovincia">
+        {{provincia.Provincia}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  precioGasoleoA:                 string;
+    precioGasolina95E5:             string;
+    precioGasolina98E5:
+
+
+  
+
+  
+
+  
+
+
+  
+  
 <div class="scroll-container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px grid" fxFlexFill fxLayoutAlign="start start">
     <app-gasolinera-item fxFlex="15" class="movie-item" app-gasolinera-item *ngFor="let gasolinera of gasolineraList" [gasolineraInput]="gasolinera"></app-gasolinera-item>
 </div>

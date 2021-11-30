@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogGasolineraDetailComponent } from 'src/app/dialogs/dialog-gasolinera-detail/dialog-gasolinera-detail.component';
-import { GasolinerasListResponse, listaEESSPrecio } from 'src/app/models/interfaces/gasolinera.interface';
+import { GasolinerasListResponse, listaEESSPrecio, Provincias } from 'src/app/models/interfaces/gasolinera.interface';
 import { GasolineraService } from 'src/app/service/gasolinera.service';
 
 
@@ -11,6 +11,11 @@ import { GasolineraService } from 'src/app/service/gasolinera.service';
 })
 export class GasolineraListComponent implements OnInit {
   gasolineraList: listaEESSPrecio[] = [];
+  
+  todasgasolineras!: listaEESSPrecio[];
+  provincias: Provincias[] = [];
+
+  IDPovincia: String[]=[];
 
   constructor(private gasolineraService: GasolineraService) { }
 
@@ -36,8 +41,23 @@ export class GasolineraListComponent implements OnInit {
 
       let jsonFinal: GasolinerasListResponse = JSON.parse(jsonStringReplaced13);
       this.gasolineraList =  jsonFinal.listaEESSPrecio;
+      this.todasgasolineras = jsonFinal.listaEESSPrecio;
+      this.gasolineraService.getProvincias().subscribe(m=>{
+        this.provincias=m
+      });
       console.log(this.gasolineraList);
     });
+  }
+
+
+
+  filterGasolinera(){
+      let result : listaEESSPrecio[] = this.gasolineraList.filter(gasolinera => this.IDPovincia.includes(gasolinera.idProvincia));
+      this.gasolineraList = result;
+  }
+
+  quitarFiltro(){
+    this.gasolineraList = this.todasgasolineras;
   }
 
   

@@ -1,0 +1,19 @@
+.movie-overview {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block; 
+}
+.movie-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
+    
+     
+    font-weight: bold;
+    margin: 0;
+}
+.movie-card {
+    min-height: 300px;
+}
