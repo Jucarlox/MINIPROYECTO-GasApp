@@ -27,4 +27,8 @@ export class GasolineraService {
   getProvincias(): Observable<any> {
     return this.http.get<any>("https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/");
   }
+
+  getGoogleMaps(direccion:String) {
+    return window.location.href=(`https://www.google.es/maps/search/${direccion}/`);
+  }
 }

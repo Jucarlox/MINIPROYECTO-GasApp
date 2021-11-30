@@ -7,23 +7,30 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-<button mat-raised-button color="accent" (click)="filterGasolinera()">Filtrar</button>
-<button mat-raised-button color="accent" (click)="quitarFiltro()">Quitar Filtro</button></div> 
-
-
-<mat-form-field appearance="fill">
-  <mat-label>Provincias</mat-label>
   
-    <mat-select multiple name="genre" [(ngModel)]="IDPovincia">
-      <mat-option *ngFor="let provincia of provincias" [value]="provincia.IDPovincia">
-        {{provincia.Provincia}}
-      </mat-option>
-    </mat-select>
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Precio Min</mat-label>
+    <input matInput type="number" placeholder="0"step="0.1"  [(ngModel)]="precioMin">
+    <span matSuffix>€</span>
   </mat-form-field>
 
-  precioGasoleoA:                 string;
-    precioGasolina95E5:             string;
-    precioGasolina98E5:
+  
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Precio Max</mat-label>
+    <input matInput type="number" placeholder="0" step="0.1" [(ngModel)]="precioMax">
+    <span matSuffix>€</span>
+  </mat-form-field>
+
+
+<button mat-raised-button color="accent" (click)="filterGasolinera()">Filtrar</button>
+<button mat-raised-button color="accent" (click)="quitarFiltro()">Quitar Filtro</button>
+
+</div>
+
+
+
+
+  
 
 
   

@@ -14,8 +14,12 @@ export class GasolineraListComponent implements OnInit {
   
   todasgasolineras!: listaEESSPrecio[];
   provincias: Provincias[] = [];
-
+  gasolineraListFiltrada!: listaEESSPrecio[];
   IDPovincia: String[]=[];
+  precioMax=2;
+  precioMin=0;
+  
+  slider1=0;
 
   constructor(private gasolineraService: GasolineraService) { }
 
@@ -52,13 +56,31 @@ export class GasolineraListComponent implements OnInit {
 
 
   filterGasolinera(){
-      let result : listaEESSPrecio[] = this.gasolineraList.filter(gasolinera => this.IDPovincia.includes(gasolinera.idProvincia));
-      this.gasolineraList = result;
+    console.log(this.IDPovincia);
+
+    //Filtrado por pronvicia
+    if(this.IDPovincia != []) {
+      this.gasolineraListFiltrada = this.gasolineraList?.filter( g => this.IDPovincia.includes(g.idProvincia));
+    }
+    console.log(this.gasolineraListFiltrada);
+
+    this.gasolineraListFiltrada = this.gasolineraListFiltrada?.filter( g => (Number.parseFloat(g.precioGasoleoA.replace(',', '.')) <= this.precioMax) && (Number.parseFloat(g.precioGasoleoA.replace(',', '.'))  >= this.precioMin));
+    this.gasolineraListFiltrada = this.gasolineraListFiltrada?.filter( g => (Number.parseFloat(g.precioGasolina95E5.replace(',', '.')) <= this.precioMax) && (Number.parseFloat(g.precioGasolina95E5.replace(',', '.'))  >= this.precioMin));
+
+
+    console.log(this.IDPovincia);
+    console.log(this.precioMin);
+    console.log(this.precioMax);
+    console.log(this.gasolineraListFiltrada);
+    this.gasolineraList=this.gasolineraListFiltrada;
+
   }
 
   quitarFiltro(){
     this.gasolineraList = this.todasgasolineras;
   }
+
+
 
   
 
