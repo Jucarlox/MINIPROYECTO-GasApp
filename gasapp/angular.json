@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "gasapp:build:production",
+            "firebaseProject": "gasapp-6c155",
+            "firebaseHostingSite": "gasapp-6c155"
+          }
         }
       }
     }

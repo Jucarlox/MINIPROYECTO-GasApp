@@ -19,6 +19,7 @@ export interface listaEESSPrecio {
     idMunicipio:                    string;
     idProvincia:                    string;
     idccaa:                         string;
+    IDEESS:                         string;
 }
 
 export interface Provincias {
