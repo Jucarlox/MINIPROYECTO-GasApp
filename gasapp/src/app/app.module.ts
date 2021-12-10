@@ -30,6 +30,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { AngularFireAuthModule, USE_DEVICE_LANGUAGE, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
+import { GasolineraLikeComponent } from './components/gasolinera-like/gasolinera-like.component';
+import { GasolineraLikeListComponent } from './components/gasolinera-like-list/gasolinera-like-list.component';
+import { SideMenuComponent } from './shared/side-menu/side-menu.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
     GasolineraListComponent,
     GasolineraItemComponent,
     DialogGasolineraDetailComponent,
-    LoginComponent
+    LoginComponent,
+    GasolineraLikeComponent,
+    GasolineraLikeListComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,

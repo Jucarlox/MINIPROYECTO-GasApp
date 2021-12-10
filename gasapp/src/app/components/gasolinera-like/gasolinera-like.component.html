@@ -1,0 +1,19 @@
+
+
+<mat-card class="movie-card">
+    <mat-card-content>
+        <div class="movie-image">
+            <img src="https://static3.elcomercio.es/www/multimedia/201911/30/media/cortadas/langreo-gasolinera-kdcC-U90839425482Ul-1248x770@El%20Comercio.jpg" width="300px" />
+        </div>
+        <h3 class="movie-title">{{gasolineraLikeInput.rotulo}}</h3>
+        <p class="movie-overview">{{gasolineraLikeInput.direccion}}</p>
+        <p class="movie-overview">{{gasolineraLikeInput.provincia}}</p>
+        
+       
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-icon-button aria-label="Example icon button with a heart icon" (click)="dislike(gasolineraLikeInput)">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,9 @@
+<button mat-icon-button aria-label="Example icon button with a heart icon" (click)="likeReload()">
+    <p>Volver</p>
+  </button>
+
+<div class="scroll-container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px grid" fxFlexFill fxLayoutAlign="start start">
+    <app-gasolinera-like fxFlex="15" class="movie-item" *ngFor="let gasolinera of gasolinerasLikeList | async" [gasolineraLikeInput]="gasolinera"></app-gasolinera-like>
+</div>
+
+

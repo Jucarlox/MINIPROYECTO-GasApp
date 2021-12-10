@@ -98,6 +98,11 @@ export class GasolineraListComponent implements OnInit {
   }
 
 
+  likeReload(){
+    window.location.replace("http://localhost:4200/gasolineraslike");
+  }
+
+
   
 
 }

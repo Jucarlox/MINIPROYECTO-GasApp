@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { listaEESSPrecio } from 'src/app/models/interfaces/gasolinera.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogGasolineraDetailComponent } from 'src/app/dialogs/dialog-gasolinera-detail/dialog-gasolinera-detail.component';
@@ -6,6 +6,8 @@ import { GasolineraService } from 'src/app/service/gasolinera.service';
 import firebaseConfig from 'firebase/compat/app';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { generateKeyPair } from 'crypto';
 const COLLECTION_GASOLINERA_LIKE = 'gasolineraLike'; 
 
 @Component({
@@ -15,9 +17,9 @@ const COLLECTION_GASOLINERA_LIKE = 'gasolineraLike';
 })
 export class GasolineraItemComponent implements OnInit {
 
-  @Input() gasolineraInput!: listaEESSPrecio;
+  @Input() gasolineraInput!: listaEESSPrecio; 
   gasolineraList!: Observable<listaEESSPrecio[]>;
-  constructor(private dialog: MatDialog, private gasolineraService: GasolineraService, private firestore: AngularFirestore) { }
+  constructor(private dialog: MatDialog, private gasolineraService: GasolineraService, private firestore: AngularFirestore,private auth: AngularFireAuth) { }
 
   ngOnInit(): void {
   }
@@ -35,9 +37,9 @@ export class GasolineraItemComponent implements OnInit {
   }
 
   likeGasolinera(gasolinera: listaEESSPrecio) {
-
-    this.firestore.collection(COLLECTION_GASOLINERA_LIKE).doc(gasolinera.IDEESS)
-      .set({ 
+    if(localStorage.getItem('name')!=null) {
+    this.firestore.collection(COLLECTION_GASOLINERA_LIKE)
+      .add({ 
         provincia: gasolinera.provincia, 
         direccion: gasolinera.direccion, 
         horario: gasolinera.horario,
@@ -51,8 +53,20 @@ export class GasolineraItemComponent implements OnInit {
         idMunicipio: gasolinera.idMunicipio,
         idProvincia: gasolinera.idProvincia,
         idccaa: gasolinera.idccaa,
+        userName: localStorage.getItem('name'),
+        
       });
+    } else {
+      window.location.replace("http://localhost:4200/login")
+    }
     this.gasolineraList = this.firestore.collection<listaEESSPrecio>(COLLECTION_GASOLINERA_LIKE).valueChanges();
+    
+    
+    
   }
+
+  
+  
+  
 
 }
