@@ -4,3 +4,8 @@ export interface User {
     uid: string;
     photo: string;
 }
+
+export default class ListaFirebaseDto {
+    id?: string;
+    title?: string;
+  }

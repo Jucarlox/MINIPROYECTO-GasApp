@@ -18,7 +18,8 @@ export class GasolineraLikeListComponent implements OnInit {
   gasolinerasLikeList!: Observable<listaEESSPrecio[]>;
   
   ngOnInit(): void {
-    this.gasolinerasLikeList= this.firestore.collection<listaEESSPrecio>(COLLECTION_GASOLINERA_LIKE, ref=>ref.where('userName','==',localStorage.getItem('name'))).valueChanges();
+    let id= localStorage.getItem('uid');
+    this.gasolinerasLikeList= this.firestore.collection<listaEESSPrecio>(`user/${id}/listas/OHXWN59DPfvd1W9GaEHh/gasolinerasFavorite`).valueChanges();
     
   }
   likeReload(){

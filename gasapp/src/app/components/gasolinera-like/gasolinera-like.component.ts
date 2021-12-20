@@ -22,11 +22,13 @@ export class GasolineraLikeComponent implements OnInit {
 
   dislike(gasolinera: listaEESSPrecio){
     
-    this.firestore.collection(COLLECTION_GASOLINERA_LIKE, ref=>ref.where('userName','==',localStorage.getItem('name')).where('ideess','==',gasolinera.ideess)).doc().delete();
+    let id = localStorage.getItem('uid');
+    this.firestore.collection(`user/${id}/gasolinerasFavorite`).doc(gasolinera.ideess).delete();
     
     
   }
  
+  
 
 }
 

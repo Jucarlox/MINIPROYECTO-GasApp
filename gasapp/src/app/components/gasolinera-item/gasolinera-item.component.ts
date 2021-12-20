@@ -37,11 +37,13 @@ export class GasolineraItemComponent implements OnInit {
   }
 
   likeGasolinera(gasolinera: listaEESSPrecio) {
-    if(localStorage.getItem('name')!=null) {
-    this.firestore.collection(COLLECTION_GASOLINERA_LIKE)
-      .add({ 
-        provincia: gasolinera.provincia, 
-        direccion: gasolinera.direccion, 
+    if(localStorage.getItem('uid') == null){
+      window.location.replace("http://localhost:4200/login")
+    }else{
+      let id = localStorage.getItem('uid');
+      this.firestore.collection(`user/${id}/listas/`).doc(gasolinera.ideess).set({
+        provincia: gasolinera.provincia,
+        direccion: gasolinera.direccion,
         horario: gasolinera.horario,
         cP: gasolinera.cP,
         municipio: gasolinera.municipio,
@@ -53,20 +55,37 @@ export class GasolineraItemComponent implements OnInit {
         idMunicipio: gasolinera.idMunicipio,
         idProvincia: gasolinera.idProvincia,
         idccaa: gasolinera.idccaa,
-        userName: localStorage.getItem('name'),
-        
+        uid: localStorage.getItem('uid'),
       });
-    } else {
-      window.location.replace("http://localhost:4200/login")
     }
-    this.gasolineraList = this.firestore.collection<listaEESSPrecio>(COLLECTION_GASOLINERA_LIKE).valueChanges();
-    
-    
-    
   }
 
-  
-  
-  
+  SaveListGasolinera(nombreLista: string, descripcion: string, gasolinera: listaEESSPrecio){
+    let userId= localStorage.getItem('uid');
+    this.firestore.collection(`user/${userId}/listas`).doc(gasolinera.ideess).set({
+      nombre: nombreLista,
+      descripcion: descripcion,
+      uid: userId
+    });
+  }
 
+  addGasolineraList(nombreLista: String, gasolinera: listaEESSPrecio){
+    let userId= localStorage.getItem('uid');
+    this.firestore.collection(`user/${userId}/listas/${nombreLista}/gasolineras`).doc(gasolinera.ideess).set({
+      provincia: gasolinera.provincia,
+      direccion: gasolinera.direccion,
+      horario: gasolinera.horario,
+      cP: gasolinera.cP,
+      municipio: gasolinera.municipio,
+      precioGasoleoA: gasolinera.precioGasoleoA,
+      precioGasolina95E5: gasolinera.precioGasolina95E5,
+      precioGasolina98E5: gasolinera.precioGasolina98E5,
+      rotulo: gasolinera.rotulo,
+      ideess: gasolinera.ideess,
+      idMunicipio: gasolinera.idMunicipio,
+      idProvincia: gasolinera.idProvincia,
+      idccaa: gasolinera.idccaa,
+      uid: localStorage.getItem('uid'),
+    });
+  }
 }

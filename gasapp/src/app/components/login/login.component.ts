@@ -26,8 +26,10 @@ export class LoginComponent implements OnInit {
     this.auth.signInWithPopup(new firebaseConfig.auth.GoogleAuthProvider()).then(resp => {
       this.firestore.collection(COLLECTION_USER).doc(resp?.user?.uid)
       .set({ name: resp.user?.displayName, 
-        email: resp.user?.email, 
-        photo: resp.user?.photoURL });
+        email: resp.user?.email,
+        uid: resp.user?.uid,
+        photo: resp.user?.photoURL,
+       });
       localStorage.setItem('name', resp.user?.displayName? resp.user?.displayName: '');
       localStorage.setItem('photo', resp.user?.photoURL? resp.user?.photoURL: '');
       localStorage.setItem('uid', resp.user?.uid? resp.user?.uid: '');

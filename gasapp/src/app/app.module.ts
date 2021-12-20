@@ -33,6 +33,7 @@ import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
 import { GasolineraLikeComponent } from './components/gasolinera-like/gasolinera-like.component';
 import { GasolineraLikeListComponent } from './components/gasolinera-like-list/gasolinera-like-list.component';
 import { SideMenuComponent } from './shared/side-menu/side-menu.component';
+import { UserGasolineraListComponent } from './components/user-gasolinera-list/user-gasolinera-list.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SideMenuComponent } from './shared/side-menu/side-menu.component';
     LoginComponent,
     GasolineraLikeComponent,
     GasolineraLikeListComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    UserGasolineraListComponent
   ],
   imports: [
     BrowserModule,
